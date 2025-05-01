@@ -2,7 +2,7 @@ import toml
 from peewee import SqliteDatabase
 
 
-class DataBaseMeta(type):
+class IDataBase(type):
     _instances: dict = {}
 
     def __call__(cls, *args, **kwargs):
@@ -12,7 +12,7 @@ class DataBaseMeta(type):
         return cls._instances[cls]
 
 
-class DataBase(metaclass=DataBaseMeta):
+class DataBase(metaclass=IDataBase):
     @property
     def sqlite(self):
         with open('config.toml', mode='r') as file:
