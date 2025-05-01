@@ -5,8 +5,9 @@ from models import Address, City, Street, User, db
 class Table:
     def __init__(self) -> None:
         self._fake = Data()
+        self._create_table()
 
-    def create_table(self) -> None:
+    def _create_table(self) -> None:
         db.connect()
         db.create_tables([User, City, Street, Address])
 
