@@ -1,0 +1,11 @@
+[project]
+name = "fundamentalit"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "faker>=37.1.0",
+    "peewee>=3.18.1",
+    "streamlit>=1.45.0",
+]
