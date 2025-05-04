@@ -26,12 +26,13 @@ class Data:
             street = street,
             city = city)
 
-    def user(self, sex: Sex, min_age: int, max_age: int, address: Address)-> User:
+    def user(self, second_name:str, sex: Sex, min_age: int, max_age: int, address: Address)-> User:
+        second_name = second_name
         match sex:
             case Sex.MALE:
                 usr = User.create(
                     firstname=fake.first_name_male(),
-                    secondname=fake.last_name_male(),
+                    secondname=second_name,
                     sex = Sex.MALE.name,
                     birthday = fake.date_of_birth(minimum_age=min_age, maximum_age=max_age),
                     address= address)
@@ -39,7 +40,7 @@ class Data:
             case Sex.FEMALE:
                 usr = User.create(
                     firstname=fake.first_name_female(),
-                    secondname=fake.last_name_female(),
+                    secondname=second_name,
                     sex = Sex.FEMALE.name,
                     birthday = fake.date_of_birth(minimum_age=min_age, maximum_age=max_age),
                 address = address)
@@ -47,8 +48,11 @@ class Data:
             case _:
                 usr = User.create(
                     firstname=fake.first_name_unisex(),
-                    secondname=fake.last_name_unisex(),
+                    secondname=second_name,
                     sex = Sex.UNKNOWN.name,
                     birthday = fake.date_of_birth(minimum_age=min_age, maximum_age=max_age),
                     address = address)
                 return usr
+
+    def second_name(self)-> str:
+        return fake.last_name()
